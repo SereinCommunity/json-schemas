@@ -6,7 +6,7 @@
     "definitions": {
         "version": {
             "type": "string",
-            "pattern": "^\\d+(\\.\\d+){0,3}$"
+            "pattern": "^\\d{1,5}(\\.\\d{1,7}){0,3}$"
         }
     },
     "required": [
@@ -14,51 +14,60 @@
         "id",
         "author",
         "version",
-        "targetingSereinVersion"
+        "targetingSereinVersion",
+        "tags"
     ],
     "additionalItems": false,
     "properties": {
         "name": {
             "type": "string",
-            "description": "插件名称"
+            "description": "插件名称。可以包含中英文数字和特殊字符"
         },
         "id": {
             "type": "string",
-            "description": "插件的唯一标识符",
-            "pattern": "^[\\w-]{5,25}$"
+            "description": "插件的唯一标识符。用于区分插件，仅能由长度为5~25的英文字符、数字和下划线组成，且应以英文字母开头",
+            "pattern": "^[a-zA-Z][\\w]{4,25}$"
         },
         "author": {
             "type": "string",
-            "description": "作者"
+            "title": "作者"
         },
         "version": {
-            "description": "版本号",
+            "title": "版本号",
             "$ref": "#/definitions/version"
         },
         "targetingSereinVersion": {
             "description": "适用的Serein的最低版本号",
             "$ref": "#/definitions/version"
         },
-        "targetingServerInfo": {
+        "targetingServerInfos": {
             "description": "适用的服务器信息",
-            "type": "object",
-            "properties": {
-                "version": {
-                    "description": "版本号",
-                    "$ref": "#/definitions/version"
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "description": "版本号",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "服务器名称",
+                        "type": "string",
+                        "default": null
+                    },
+                    "description": {
+                        "description": "服务器描述",
+                        "type": "string",
+                        "default": null
+                    }
                 },
-                "name": {
-                    "description": "服务器名称",
-                    "type": "string",
-                    "default": null
-                },
-                "description": {
-                    "description": "服务器描述",
-                    "type": "string",
-                    "default": null
-                }
+                "additionalItems": false
             },
-            "additionalItems": false
+            "required": [
+                "name",
+                "version"
+            ],
+            "minItems": 1
         },
         "requirements": {
             "type": "array",
@@ -66,22 +75,27 @@
             "minItems": 0,
             "items": {
                 "type": "object",
-                "additionalItems": false,
                 "properties": {
                     "id": {
                         "description": "插件的唯一标识符",
+                        "pattern": "^[\\w-]{5,25}$",
                         "type": "string"
                     },
                     "version": {
                         "description": "版本号",
                         "$ref": "#/definitions/version"
                     }
-                }
+                },
+                "additionalItems": false,
+                "required": [
+                    "id",
+                    "version"
+                ]
             }
         },
         "tags": {
             "type": "array",
-            "description": "标签",
+            "description": "标签。用于为插件归类，方便搜索",
             "minItems": 1,
             "items": {
                 "enum": [
@@ -92,7 +106,8 @@
                     "management",
                     "api"
                 ]
-            }
+            },
+            "uniqueItems": true
         }
     }
 }
