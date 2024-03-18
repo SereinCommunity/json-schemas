@@ -19,7 +19,7 @@
     "$schema": "https://sereincommunity.github.io/PluginInfoJsonSchema/v1.json",
 
     "name": "hello world",                // 插件名称
-    "id": "hello_world",                  // 插件ID
+    "id": "hello-world",                  // 插件ID
     "author": "Zaitonn",                  // 插件作者
     "version": "1.2.3.4",                 // 插件版本
     "targetingSereinVersion": "2.0.0",    // 适用的Serein的最低版本

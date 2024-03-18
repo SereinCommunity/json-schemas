@@ -17,23 +17,23 @@
         "targetingSereinVersion",
         "tags"
     ],
-    "additionalItems": false,
+    "additionalProperties": false,
     "properties": {
         "name": {
-            "type": "string",
-            "description": "插件名称。可以包含中英文数字和特殊字符"
+            "description": "插件名称。可以包含中英文数字和特殊字符",
+            "type": "string"
         },
         "id": {
+            "description": "插件的唯一标识符。用于区分插件，仅能由长度为5~25的英文字符、数字和短横线组成，且应以英文字母开头",
             "type": "string",
-            "description": "插件的唯一标识符。用于区分插件，仅能由长度为5~25的英文字符、数字和下划线组成，且应以英文字母开头",
-            "pattern": "^[a-zA-Z][\\w]{4,25}$"
+            "pattern": "^[a-zA-Z][a-zA-Z1-9\\-]{4,25}$"
         },
         "author": {
-            "type": "string",
-            "title": "作者"
+            "description": "作者",
+            "type": "string"
         },
         "version": {
-            "title": "版本号",
+            "description": "版本号",
             "$ref": "#/definitions/version"
         },
         "targetingSereinVersion": {
@@ -61,17 +61,17 @@
                         "default": null
                     }
                 },
-                "additionalItems": false
+                "additionalProperties": false,
+                "required": [
+                    "name",
+                    "version"
+                ]
             },
-            "required": [
-                "name",
-                "version"
-            ],
             "minItems": 1
         },
         "requirements": {
-            "type": "array",
             "description": "前置依赖",
+            "type": "array",
             "minItems": 0,
             "items": {
                 "type": "object",
@@ -86,7 +86,7 @@
                         "$ref": "#/definitions/version"
                     }
                 },
-                "additionalItems": false,
+                "additionalProperties": false,
                 "required": [
                     "id",
                     "version"
@@ -94,8 +94,8 @@
             }
         },
         "tags": {
+            "description": "标签。用于为插件归类，方便用户搜索",
             "type": "array",
-            "description": "标签。用于为插件归类，方便搜索",
             "minItems": 1,
             "items": {
                 "enum": [
