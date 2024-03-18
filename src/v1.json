@@ -1,0 +1,98 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://sereincommunity.github.io/PluginInfoJsonSchema/v1.json",
+    "title": "Serein的插件信息",
+    "type": "object",
+    "definitions": {
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+(\\.\\d+){0,3}$"
+        }
+    },
+    "required": [
+        "name",
+        "id",
+        "author",
+        "version",
+        "targetingSereinVersion"
+    ],
+    "additionalItems": false,
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "插件名称"
+        },
+        "id": {
+            "type": "string",
+            "description": "插件的唯一标识符",
+            "pattern": "^[\\w-]{5,25}$"
+        },
+        "author": {
+            "type": "string",
+            "description": "作者"
+        },
+        "version": {
+            "description": "版本号",
+            "$ref": "#/definitions/version"
+        },
+        "targetingSereinVersion": {
+            "description": "适用的Serein的最低版本号",
+            "$ref": "#/definitions/version"
+        },
+        "targetingServerInfo": {
+            "description": "适用的服务器信息",
+            "type": "object",
+            "properties": {
+                "version": {
+                    "description": "版本号",
+                    "$ref": "#/definitions/version"
+                },
+                "name": {
+                    "description": "服务器名称",
+                    "type": "string",
+                    "default": null
+                },
+                "description": {
+                    "description": "服务器描述",
+                    "type": "string",
+                    "default": null
+                }
+            },
+            "additionalItems": false
+        },
+        "requirements": {
+            "type": "array",
+            "description": "前置依赖",
+            "minItems": 0,
+            "items": {
+                "type": "object",
+                "additionalItems": false,
+                "properties": {
+                    "id": {
+                        "description": "插件的唯一标识符",
+                        "type": "string"
+                    },
+                    "version": {
+                        "description": "版本号",
+                        "$ref": "#/definitions/version"
+                    }
+                }
+            }
+        },
+        "tags": {
+            "type": "array",
+            "description": "标签",
+            "minItems": 1,
+            "items": {
+                "enum": [
+                    "entertainment",
+                    "development",
+                    "tool",
+                    "information",
+                    "management",
+                    "api"
+                ]
+            }
+        }
+    }
+}
