@@ -18,11 +18,11 @@
 {
     "$schema": "https://sereincommunity.github.io/PluginInfoJsonSchema/v1.json",
 
-    "name": "hello world",                // 插件名称
-    "id": "hello-world",                  // 插件ID
-    "author": "Zaitonn",                  // 插件作者
-    "version": "1.2.3.4",                 // 插件版本
-    "targetingSereinVersion": "2.0.0",    // 适用的Serein的最低版本
+    "name": "hello world",                // 插件名称 （必填）
+    "id": "hello-world",                  // 插件ID （必填）
+    "author": "Zaitonn",                  // 插件作者 （必填）
+    "version": "1.2.3.4",                 // 插件版本 （必填）
+    "targetingSereinVersion": "2.0.0",    // 适用的Serein的最低版本 （必填）
     "targetingServerInfos": [             // 适用的服务器信息
         {
           "version": "1.21.0.0",
@@ -30,8 +30,8 @@
           "description": ""
         }
     ],
-    "requirements": [],                   // 前置插件
-    "tags": [                             // 标签
+    "dependencies": [],                   // 前置依赖插件
+    "tags": [                             // 标签 （必填）
         "entertainment",
         "management",
         "api",

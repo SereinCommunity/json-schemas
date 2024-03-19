@@ -69,7 +69,12 @@
             },
             "minItems": 1
         },
-        "requirements": {
+        "isDependency": {
+            "description": "是否为依赖插件。若为`true`则此插件不会出现在Serein内置的插件市场中且不会被主动加载",
+            "type": "boolean",
+            "default": false
+        },
+        "dependencies": {
             "description": "前置依赖",
             "type": "array",
             "minItems": 0,
