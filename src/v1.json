@@ -26,7 +26,7 @@
         "id": {
             "description": "插件的唯一标识符。用于区分插件，仅能由长度为5~25的英文字符、数字和短横线组成，且应以英文字母开头",
             "type": "string",
-            "pattern": "^[a-zA-Z][a-zA-Z1-9\\-]{4,25}$"
+            "pattern": "^[a-zA-Z][a-zA-Z0-9\\-]{4,25}$"
         },
         "author": {
             "description": "作者",
@@ -113,6 +113,10 @@
                 ]
             },
             "uniqueItems": true
+        },
+        "description": {
+            "description": "插件介绍",
+            "type": "string"
         }
     }
 }
