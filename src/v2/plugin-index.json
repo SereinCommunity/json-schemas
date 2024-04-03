@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://sereincommunity.github.io/json-schema/v2/plugin-index.json",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "repo",
+        "authors"
+    ],
+    "properties": {
+        "repo": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9\\-]+/[a-zA-Z0-9\\-]+$",
+            "title": "仓库地址",
+            "description": "格式：<所有者>/<仓库名>",
+            "examples": [
+                "example/examples"
+            ]
+        },
+        "path": {
+            "type": "string",
+            "title": "路径",
+            "description": "插件信息JSON文件所在路径；若未填写则使用根目录"
+        },
+        "branch": {
+            "type": "string",
+            "title": "分支",
+            "description": "插件信息JSON文件所在分支；若未填写则使用默认分支"
+        },
+        "authors": {
+            "type": "array",
+            "additionalItems": false,
+            "items": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "title": "名称",
+                            "description": "用户名或组织名称"
+                        },
+                        "description": {
+                            "type": "string",
+                            "title": "描述",
+                            "description": "作者的一句话描述",
+                            "maxLength": 30
+                        }
+                    }
+                }
+            ],
+            "minItems": 1,
+            "title": "作者",
+            "description": "可以填写多个插件作者"
+        }
+    }
+}

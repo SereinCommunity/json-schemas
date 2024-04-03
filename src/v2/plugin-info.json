@@ -1,0 +1,98 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://sereincommunity.github.io/json-schema/v2/plugin-info.json",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "name",
+        "id",
+        "tags",
+        "targetingSerein",
+        "isDependency"
+    ],
+    "properties": {
+        "name": {
+            "type": "string",
+            "title": "插件名称",
+            "description": "方便用户区分，无长度和字符限制"
+        },
+        "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9\\-]{4,25}$",
+            "title": "插件的唯一标识符",
+            "description": "用于区分插件，仅能由长度为4~25的英文字符、数字和短横线组成，且应以英文字母开头"
+        },
+        "tags": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "enum": [
+                    "entertainment",
+                    "development",
+                    "tool",
+                    "information",
+                    "management",
+                    "api"
+                ]
+            },
+            "uniqueItems": true,
+            "title": "标签",
+            "description": "用于归类插件，方便用户搜索"
+        },
+        "description": {
+            "type": "string",
+            "maxLength": 50,
+            "title": "插件介绍",
+            "description": "简单描述功能，分别用户了解插件功能"
+        },
+        "targetingSerein": {
+            "type": "array",
+            "uniqueItems": true,
+            "additionalItems": false,
+            "items": {
+                "enum": [
+                    "1.3.0",
+                    "1.3.1",
+                    "1.3.2",
+                    "1.3.3",
+                    "1.3.4",
+                    "1.3.5",
+                    "2.0.x"
+                ]
+            },
+            "title": "适用的Serein的版本",
+            "description": "一个由版本号组成的枚举值数组"
+        },
+        "isDependency": {
+            "type": "boolean",
+            "default": false,
+            "title": "是否为依赖插件",
+            "description": "若为`true`则此插件不会出现在Serein内置的插件市场中"
+        },
+        "dependencies": {
+            "title": "前置依赖",
+            "description": "所有依赖插件都会被一同安装",
+            "type": "array",
+            "minItems": 0,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "插件的唯一标识符",
+                        "pattern": "^[\\w-]{5,25}$",
+                        "type": "string"
+                    },
+                    "version": {
+                        "title": "版本号",
+                        "$ref": "#/definitions/version"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "version"
+                ]
+            }
+        }
+    }
+}

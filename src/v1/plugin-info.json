@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://sereincommunity.github.io/PluginInfoJsonSchema/v1.json",
+    "$id": "https://sereincommunity.github.io/json-schema/v1/plugin-info.json",
     "title": "Serein的插件信息",
     "type": "object",
     "definitions": {
