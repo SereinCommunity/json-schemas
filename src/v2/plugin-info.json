@@ -8,7 +8,7 @@
         "id",
         "tags",
         "targetingSerein",
-        "isDependency"
+        "isModule"
     ],
     "properties": {
         "name": {
@@ -43,7 +43,7 @@
             "type": "string",
             "maxLength": 50,
             "title": "插件介绍",
-            "description": "简单描述功能，分别用户了解插件功能"
+            "description": "简单描述功能，方便用户了解插件功能"
         },
         "targetingSerein": {
             "type": "array",
@@ -63,10 +63,10 @@
             "title": "适用的Serein的版本",
             "description": "一个由版本号组成的枚举值数组"
         },
-        "isDependency": {
+        "isModule": {
             "type": "boolean",
             "default": false,
-            "title": "是否为依赖插件",
+            "title": "是否为模块插件",
             "description": "若为`true`则此插件不会出现在Serein内置的插件市场中"
         },
         "dependencies": {
@@ -78,13 +78,14 @@
                 "type": "object",
                 "properties": {
                     "id": {
+                        "type": "string",
                         "title": "插件的唯一标识符",
-                        "pattern": "^[\\w-]{5,25}$",
-                        "type": "string"
+                        "pattern": "^[\\w-]{5,25}$"
                     },
                     "version": {
-                        "title": "版本号",
-                        "$ref": "#/definitions/version"
+                        "type": "string",
+                        "title": "版本",
+                        "pattern": "^\\d{1,7}(\\.\\d{1,7}){1,3}$"
                     }
                 },
                 "additionalProperties": false,

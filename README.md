@@ -12,10 +12,11 @@ Json规范
 
 ### v2✨
 
-| 文件名                                                                                                  | 备注     | `$schema`                                                             |
-| ------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------- |
-| [plugin-info.json](https://github.com/SereinCommunity/json-schemas/blob/main/src/v2/plugin-info.json)   | 插件信息 | `https://sereincommunity.github.io/json-schemas/v2/plugin-info.json`  |
-| [plugin-index.json](https://github.com/SereinCommunity/json-schemas/blob/main/src/v2/plugin-index.json) | 插件索引 | `https://sereincommunity.github.io/json-schemas/v2/plugin-index.json` |
+| 文件名                                                                                                  | 备注         | `$schema`                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------ | --------------------------------------------------------------------- |
+| [plugin-info.json](https://github.com/SereinCommunity/json-schemas/blob/main/src/v2/plugin-info.json)   | 插件信息     | `https://sereincommunity.github.io/json-schemas/v2/plugin-info.json`  |
+| [plugin-index.json](https://github.com/SereinCommunity/json-schemas/blob/main/src/v2/plugin-index.json) | 插件索引     | `https://sereincommunity.github.io/json-schemas/v2/plugin-index.json` |
+| [data-info.json](https://github.com/SereinCommunity/json-schemas/blob/main/src/v2/data-info.json)       | 数据文件信息 | `https://sereincommunity.github.io/json-schemas/v2/data-info.json`    |
 
 ## 使用方法
 

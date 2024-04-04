@@ -1,31 +1,38 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://sereincommunity.github.io/json-schema/v2/plugin-index.json",
+    "$id": "https://sereincommunity.github.io/json-schema/v2/match-info.json",
     "type": "object",
     "additionalProperties": false,
     "required": [
-        "repo",
+        "name",
+        "targetingSerein",
         "authors"
     ],
     "properties": {
-        "repo": {
+        "name": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9\\-]+/[a-zA-Z0-9\\-]+$",
-            "title": "仓库地址",
-            "description": "格式：<所有者>/<仓库名>",
-            "examples": [
-                "example/examples"
-            ]
+            "title": "匹配文件名称",
+            "description": "方便用户区分，无长度和字符限制"
         },
-        "path": {
+        "description": {
             "type": "string",
-            "title": "路径",
-            "description": "插件信息JSON文件所在路径；若未填写则使用根目录"
+            "maxLength": 50,
+            "title": "匹配文件介绍",
+            "description": "简单描述功能，方便用户了解插件功能"
         },
-        "branch": {
-            "type": "string",
-            "title": "分支",
-            "description": "插件信息JSON文件所在分支；若未填写则使用默认分支"
+        "targetingSerein": {
+            "type": "array",
+            "uniqueItems": true,
+            "additionalItems": false,
+            "items": {
+                "enum": [
+                    "1.2.x",
+                    "1.3.x",
+                    "2.0.x"
+                ]
+            },
+            "title": "适用的Serein的版本",
+            "description": "一个由版本号组成的枚举值数组"
         },
         "authors": {
             "type": "array",
@@ -54,7 +61,7 @@
             ],
             "minItems": 1,
             "title": "作者",
-            "description": "可以填写多个插件作者"
+            "description": "可以填写多个作者"
         }
     }
 }
