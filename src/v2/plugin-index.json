@@ -4,18 +4,22 @@
     "type": "object",
     "additionalProperties": false,
     "required": [
-        "repo",
+        "owner",
+        "repoName",
         "authors"
     ],
     "properties": {
-        "repo": {
+        "owner": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9\\-]+/[a-zA-Z0-9\\-]+$",
-            "title": "仓库地址",
-            "description": "格式：<所有者>/<仓库名>",
-            "examples": [
-                "example/examples"
-            ]
+            "pattern": "^[a-zA-Z0-9\\-]+$",
+            "title": "所有者",
+            "description": "仓库所有者，可以是组织或者用户"
+        },
+        "repoName": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9\\-\\.]+$",
+            "title": "仓库名称",
+            "description": "仓库名称"
         },
         "path": {
             "type": "string",
@@ -25,7 +29,8 @@
         "branch": {
             "type": "string",
             "title": "分支",
-            "description": "插件信息JSON文件所在分支；若未填写则使用默认分支"
+            "description": "插件信息JSON文件所在分支；若未填写则使用默认分支",
+            "default": "main"
         },
         "authors": {
             "type": "array",
@@ -46,8 +51,7 @@
                         "description": {
                             "type": "string",
                             "title": "描述",
-                            "description": "作者的一句话描述",
-                            "maxLength": 30
+                            "description": "作者的一句话描述"
                         }
                     }
                 }
