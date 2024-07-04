@@ -8,7 +8,9 @@
         "id",
         "tags",
         "targetingSerein",
-        "isModule"
+        "isModule",
+        "authors",
+        "type"
     ],
     "properties": {
         "name": {
@@ -100,49 +102,40 @@
                 ]
             }
         },
-        "config": {
-            "type": "object",
-            "title": "初始化插件引擎所使用的配置",
-            "additionalProperties": false,
-            "properties": {
-                "netAssemblies": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "title": "Net程序集名称"
+        "authors": {
+            "type": "array",
+            "additionalItems": false,
+            "items": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "name"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "title": "名称",
+                            "description": "用户名或组织名称"
+                        },
+                        "description": {
+                            "type": "string",
+                            "title": "描述",
+                            "description": "作者的一句话描述"
+                        }
                     }
-                },
-                "debug": {
-                    "type": "boolean",
-                    "title": "启用Debug模式"
-                },
-                "allowGetType": {
-                    "type": "boolean",
-                    "title": "允许使用`GetType()`"
-                },
-                "allowOperatorOverloading": {
-                    "type": "boolean",
-                    "title": "允许使用操作符重载",
-                    "default": true
-                },
-                "allowSystemReflection": {
-                    "type": "boolean",
-                    "title": "允许使用系统反射"
-                },
-                "allowWrite": {
-                    "type": "boolean",
-                    "title": "允许对程序集写入"
-                },
-                "strict": {
-                    "type": "boolean",
-                    "title": "Javascipt 严格模式"
-                },
-                "stringCompilationAllowed": {
-                    "type": "boolean",
-                    "title": "允许字符串编译（`eval('...')`、`new Function('...')`）",
-                    "default": true
                 }
-            }
+            ],
+            "minItems": 1,
+            "title": "作者",
+            "description": "可以填写多个插件作者"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "js",
+                "net"
+            ]
         }
     }
 }

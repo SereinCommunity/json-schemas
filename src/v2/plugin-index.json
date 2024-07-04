@@ -5,8 +5,7 @@
     "additionalProperties": false,
     "required": [
         "owner",
-        "repoName",
-        "authors"
+        "repoName"
     ],
     "properties": {
         "owner": {
@@ -31,34 +30,6 @@
             "title": "分支",
             "description": "插件信息JSON文件所在分支；若未填写则使用默认分支",
             "default": "main"
-        },
-        "authors": {
-            "type": "array",
-            "additionalItems": false,
-            "items": [
-                {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "required": [
-                        "name"
-                    ],
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "title": "名称",
-                            "description": "用户名或组织名称"
-                        },
-                        "description": {
-                            "type": "string",
-                            "title": "描述",
-                            "description": "作者的一句话描述"
-                        }
-                    }
-                }
-            ],
-            "minItems": 1,
-            "title": "作者",
-            "description": "可以填写多个插件作者"
         }
     }
 }
