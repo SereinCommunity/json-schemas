@@ -29,7 +29,7 @@
         "version": {
             "type": "string",
             "title": "版本",
-            "description": "数组为空表示不指定版本；若有多个元素则有且仅有这些版本符合要求",
+            "description": "语义化版本号",
             "pattern": "^\\d{1,7}(\\.\\d{1,7}){1,3}$"
         },
         "description": {
@@ -53,24 +53,6 @@
             "uniqueItems": true,
             "title": "标签",
             "description": "用于归类插件，方便用户搜索"
-        },
-        "targetingSerein": {
-            "type": "array",
-            "uniqueItems": true,
-            "additionalItems": false,
-            "items": {
-                "enum": [
-                    "1.3.0",
-                    "1.3.1",
-                    "1.3.2",
-                    "1.3.3",
-                    "1.3.4",
-                    "1.3.5",
-                    "2.0"
-                ]
-            },
-            "title": "适用的Serein的版本",
-            "description": "一个由版本号组成的枚举值数组"
         },
         "dependencies": {
             "title": "前置依赖",
@@ -122,7 +104,7 @@
                         "description": {
                             "type": "string",
                             "title": "描述",
-                            "description": "作者的一句话描述"
+                            "description": "作者的描述"
                         }
                     }
                 }
